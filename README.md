@@ -34,4 +34,4 @@ Executar o comando para subir o projeto
 java -jar sigevt-0.0.1-SNAPSHOT.jar
 ```
 
-Finalmente acessar a aplicação através do endereço: localhost:8080/
+Acessar a página através do caminho http://localhost:3000/cadastrarEvento
