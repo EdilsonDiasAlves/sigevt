@@ -31,7 +31,7 @@ cd target
 
 Executar o comando para subir o projeto
 ```shell
-java -jar sigevt-0.0.1-SNAPSHOT.jar
+java -jar sigevt.jar
 ```
 
 Acessar a página através do caminho http://localhost:3000/cadastrarEvento
