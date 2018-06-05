@@ -7,14 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mzo.sigevt.model.Convidado;
 import com.mzo.sigevt.model.Evento;
+import com.mzo.sigevt.repository.ConvidadoRepository;
 import com.mzo.sigevt.repository.EventoRepository;
 
 @Controller
 public class EventoController {
 	
 	@Autowired
-	EventoRepository evtRepository;
+	EventoRepository er;
+	
+	@Autowired
+	ConvidadoRepository cr;
 
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.GET)
 	public String form() {
@@ -24,23 +29,31 @@ public class EventoController {
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.POST)
 	public String form(Evento evt) {
 		
-		evtRepository.save(evt);
+		er.save(evt);
 		return "redirect:/cadastrarEvento";
 	}
 	
-	@RequestMapping(value="/eventos")
+	@RequestMapping(value="/eventos", method=RequestMethod.GET)
 	public ModelAndView listaEventos() {
 		ModelAndView mv = new ModelAndView("index");
-		Iterable<Evento> eventos = evtRepository.findAll();
+		Iterable<Evento> eventos = er.findAll();
 		mv.addObject("eventos", eventos);
 		return mv;
 	}
 	
-	@RequestMapping(value="/{id}")
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ModelAndView detalhesEvento(@PathVariable("id") long id) {
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
-		Evento evento = evtRepository.findById(id);
+		Evento evento = er.findById(id);
 		mv.addObject("evento", evento);
 		return mv;
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.POST)
+	public String detalhesEventoPost(@PathVariable("id") long id, Convidado convidado) {
+		Evento evt = er.findById(id);
+		convidado.setEvento(evt);
+		cr.save(convidado);
+		return "redirect:/{id}";
+	}	
 }
