@@ -23,7 +23,9 @@
 			<p>Horário: <span th:text="${evento.horario}"></span></p>
 		</div>
 		
-		<form method="post">
+		<th:block th:include="mensagemValidacao"></th:block>
+		
+		<form method="post" th:object="${convidado}">
 			Nome: <input type="text" name="nome" id="nome"/>
 			RG:   <input type="text" name="rg" id="rg"/>
 			<button class="waves-effect waves-light btn" type="Submit">Enviar</button>
@@ -35,7 +37,6 @@
 			<div class="input-field col s6">
 				<p><span th:text="${convidado.nome}"></span></p>
 			</div>
-			
 			<div class="input-field col s3">
 				<p><span th:text="${convidado.rg}"></span></p>
 			</div>

@@ -3,12 +3,15 @@ package com.mzo.sigevt.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Convidado {
 
 	@Id
+	@NotEmpty
 	private String rg;
+	@NotEmpty
 	private String nome;
 	@ManyToOne
 	private Evento evento;
