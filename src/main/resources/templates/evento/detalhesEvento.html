@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8"/>
+	<title>SIGEVT</title>
+</head>
+
+<body>
+	<h1>Evento</h1>
+	<h3><a class="waves-effect waves-light btn" href="/evento"><i class="material-icons left">cloud</i>Lista de Evento</a></h3>
+	
+	<div th:each="evento : ${evento}" class="container">
+		<div class="row">
+			<p>Nome: <span th:text="${evento.nome}"></span></p>
+			<p>Local: <span th:text="${evento.local}"></span></p>
+			<p>Data: <span th:text="${evento.data}"></span></p>
+			<p>Horário: <span th:text="${evento.horario}"></span></p>
+		</div>
+	</div>
+	
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>		
+</html>

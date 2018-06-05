@@ -14,17 +14,17 @@ public class Evento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private long id;
 	private String nome;
 	private String local;
 	private String data;
 	private String horario;
 	
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
