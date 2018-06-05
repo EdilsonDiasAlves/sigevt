@@ -45,6 +45,9 @@ public class EventoController {
 	public ModelAndView detalhesEvento(@PathVariable("id") long id) {
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
 		Evento evento = er.findById(id);
+		Iterable<Convidado> convidados = cr.findByEvento(evento);
+		
+		mv.addObject("convidados", convidados);
 		mv.addObject("evento", evento);
 		return mv;
 	}
