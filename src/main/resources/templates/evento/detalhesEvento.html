@@ -1,47 +1,61 @@
 <!DOCTYPE HTML>
-
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	  
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8"/>
 	<title>SIGEVT</title>
 </head>
 
 <body>
-	<h1>Evento</h1>
-	<h3><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">cloud</i>Lista de Evento</a></h3>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Evento</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">cloud</i>Lista de Convidados</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 	
-	<div th:each="evento : ${evento}" class="container">
+	<div th:each="evento : ${evento}" class="container detalhesEvento">
+		<h5>Detalhes do Evento</h5>
 		<div class="row">
 			<p>Nome: <span th:text="${evento.nome}"></span></p>
 			<p>Local: <span th:text="${evento.local}"></span></p>
 			<p>Data: <span th:text="${evento.data}"></span></p>
 			<p>Horário: <span th:text="${evento.horario}"></span></p>
 		</div>
-		
-		<th:block th:include="mensagemValidacao"></th:block>
-		
+	</div>
+	
+	<th:block th:include="mensagemValidacao"></th:block>
+	<div class="container formConvidado">
 		<form method="post" th:object="${convidado}">
 			Nome: <input type="text" name="nome" id="nome"/>
 			RG:   <input type="text" name="rg" id="rg"/>
 			<button class="waves-effect waves-light btn" type="Submit">Enviar</button>
 		</form>
 	</div>
-	<h5>Lista de convidados</h5>
-	<div class="container" th:each="convidado : ${convidados}">
-		<div class="row">
-			<div class="input-field col s6">
-				<p><span th:text="${convidado.nome}"></span></p>
-			</div>
-			<div class="input-field col s3">
-				<p><span th:text="${convidado.rg}"></span></p>
-			</div>
-		</div>
-	</div>
+
+	<table class="container tabelaConvidado">
+		<thead>
+			<tr>
+				<th>Nome do Convidado</th>
+				<th>RG</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="convidado : ${convidados}">
+				<td><span th:text="${convidado.nome}"></span></td>
+				<td><span th:text="${convidado.rg}"></span></td>
+			</tr>
+		</tbody>
+	</table>
 	
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>		
