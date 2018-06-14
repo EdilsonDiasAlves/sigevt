@@ -1,37 +1,37 @@
 # sigevt
-Criação de sistema de gerenciamento de eventos utilizando Spring Boot (Inicialmente com Web, Devtools e Thymeleaf)
+Creating an event management system using Spring Boot (Initially with Web, Devtools and Thymeleaf)
 
 ## pré requisitos
 
-As seguintes ferramentas devem estar instaladas e devidamente configuradas:
+The following tools must be installed and properly configured:
 
 ### Java 8
-### MySQL Server (Versão utilizada 5.6.22)  
-### Maven Versão utilizada 3.5.2
+### MySQL Server (Version 5.6.22)  
+### Maven (Version 3.5.2)
     
-Clonar o repositório num diretório de sua preferência
+Clone the repository in a directory of your choice
 ```shell
 git clone https://github.com/EdilsonDiasAlves/sigevt
 ```
 
-Acessar a pasta do projeto
+Access the project's page
 ```shell
 cd sigevt
 ```
 
-Executar o maven através do comando
+Run mhe following maven command
 ```shell
 mvn clean install
 ```
 
-Após a finalização do comando acima, navegar até a pasta onde o pacote foi gerado:
+After completing the above command, navigate to the folder where the package was generated:
 ```shell
 cd target
 ```
 
-Executar o comando para subir o projeto
+Run the following command to start the project
 ```shell
 java -jar sigevt.jar
 ```
 
-Acessar a página através do caminho http://localhost:3000/cadastrarEvento
+Access the application through the address: http://localhost:3000/cadastrarEvento
