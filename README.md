@@ -1,7 +1,7 @@
 # sigevt
 Creating an event management system using Spring Boot (Initially with Web, Devtools and Thymeleaf)
 
-## pré requisitos
+## prerequisites
 
 The following tools must be installed and properly configured:
 
